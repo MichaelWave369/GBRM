@@ -54,7 +54,9 @@ test("protocol audit blocks invalid controls and misclassified computational mod
  assert.equal(auditProtocol({...valid,falsification:"no"}).ok,false);
 });
 test("computational hypothesis demands held-out baseline criterion",()=>{
- const cmp={...valid,proposal:"nbg-dcf",system:"computational / geophysical",prediction:"outperform",outcome:"Held-out forecast error in nanotesla"};
+ const cmp={...valid,proposal:"nbg-dcf",system:"computational / geophysical",prediction:"outperform",baseline:"persistence",outcome:"Held-out forecast error in nanotesla"};
  const result=auditProtocol(cmp);assert.equal(result.ok,true);
- const p=exportProtocol(cmp,"2026-10-24T00:00:00Z");assert.equal(p.category,"COMPUTATIONAL_ANALOGY");
+ const p=exportProtocol(cmp,"2026-10-24T00:00:00Z");assert.equal(p.category,"COMPUTATIONAL_ANALOGY");assert.equal(p.exposures,null);assert.equal(p.computationalBaseline,"persistence");
 });
+
+test("no fabricated field exposures in computational protocol",()=>{const x={...valid,proposal:"nbg-dcf",system:"computational / geophysical",prediction:"outperform",baseline:"linear trend",treatment:"",control:""};const a=auditProtocol(x);assert.equal(a.ok,true);assert.equal(exportProtocol(x,"2026-10-24T00:00:00Z").exposures,null)});

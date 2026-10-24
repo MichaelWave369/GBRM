@@ -67,3 +67,18 @@ GBRM does **not** infer a human brain-safety threshold; calculate ROS, neurogene
 4. Independent source review, reproducible ingestion scripts and validation fixtures.
 
 **License:** MIT. Research and learning software only, not medical advice.
+
+## v0.2 — The Living Geomagnetic Observatory
+
+The v0.2 module introduces two new tabs:
+
+- **05 / Live Observatory**: a source-connected NOAA SWPC **Kp** (unitless) chart and upstream solar-wind **IMF Bt/Bz** (nT) card; per-record UTC timestamps and stale/unavailable signals; an interactive **schematic** Earth globe with geographic reference markers; and a three-region **two-epoch** (2014 and 2025) Swarm comparison of South Atlantic/Canada/Siberia surface-field extrema. No fabricated interpolation, global intensity map, or forecast is shown.
+- **06 / Hypothesis Engine**: scoped preregistration templates for mouse neural-stem-cell replication, mitochondrial mediation, and an explicitly exploratory NBG/DCF held-out forecasting challenge. Audits check template completeness only; JSON downloads say `INFERRED` / `PROPOSED_NOT_EXECUTED`.
+
+The site can use NOAA endpoints directly from the browser without a paid service, API key or GitHub secrets. Live data naturally requires connectivity. If endpoints are unavailable, the UI displays an unavailable state instead of placeholder data.
+
+**Validation:** `node --test` and `node --check src/observatory-ui.mjs`. Scientific limits, field/time/units distinctions and source URLs are documented in [METHODS](docs/METHODS.md).
+
+**Deployment:** No new Pages settings are needed once the site is already using `main / (root)`. Merge the PR to update the existing published site.
+
+**Current official feeds:** [planetary Kp](https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json), [solar wind IMF summary](https://services.swpc.noaa.gov/products/summary/solar-wind-mag-field.json). Historic [Finlay et al., 2025](https://doi.org/10.1016/j.pepi.2025.107447).

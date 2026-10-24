@@ -63,6 +63,6 @@ export function parseFieldCSV(csv) {
 }
 export function toCsv(rows) {
   const header = "year,intensity_ut,source,provenance";
-  const escapeCell = (s) => '"' + String(s).replaceAll('"','""') + '"';
+  const escapeCell = (s) => { const raw = String(s); const safe = /^[=+@-]/.test(raw) ? "\x27" + raw : raw; return '"' + safe.replaceAll('"','""') + '"'; };
   return [header, ...rows.map(r=>[r.year,r.intensity_uT,r.source,r.provenance].map(escapeCell).join(","))].join("\n")+"\n";
 }

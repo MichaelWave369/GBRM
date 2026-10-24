@@ -17,6 +17,6 @@ jobs:
       - name: Pure logic and provenance checks
         run: node --test
       - name: Check browser module syntax
-        run: node --check src/app.mjs && node --check src/logic.mjs
+        run: node --check src/app.mjs && node --check src/logic.mjs && node --check src/observatory.mjs && node --check src/observatory-ui.mjs
       - name: Verify static entrypoints
         run: test -f index.html && test -f styles.css && test -f src/app.mjs

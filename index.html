@@ -32,7 +32,7 @@
       </div>
     </section>
     <div class="page-shell"><div class="notice"><span class="notice-glyph">i</span><p><strong>Evidence boundary.</strong> Mouse hypomagnetic experiments do not establish human health effects from current terrestrial magnetic-field changes. This workbench never predicts neurological harm.</p><a href="https://github.com/MichaelWave369/GBRM/blob/main/docs/METHODS.md" target="_blank" rel="noopener noreferrer">METHODS ↗</a></div></div>
-    <div class="page-shell"><nav class="tabs" aria-label="Research module"><button type="button" class="tab active" data-tab="field" aria-selected="true">01 <span>FIELD EXPLORER</span></button><button type="button" class="tab" data-tab="biology" aria-selected="false">02 <span>BIOLOGY LAB</span></button><button type="button" class="tab" data-tab="ledger" aria-selected="false">03 <span>EVIDENCE LEDGER</span></button><button type="button" class="tab" data-tab="datasets" aria-selected="false">04 <span>DATA STUDIO</span></button></nav></div>
+    <div class="page-shell"><nav class="tabs" aria-label="Research module"><button type="button" class="tab active" data-tab="field" aria-selected="true">01 <span>FIELD EXPLORER</span></button><button type="button" class="tab" data-tab="biology" aria-selected="false">02 <span>BIOLOGY LAB</span></button><button type="button" class="tab" data-tab="ledger" aria-selected="false">03 <span>EVIDENCE LEDGER</span></button><button type="button" class="tab" data-tab="datasets" aria-selected="false">04 <span>DATA STUDIO</span></button><button type="button" class="tab" data-tab="observatory" aria-selected="false">05 <span>LIVE OBSERVATORY</span></button><button type="button" class="tab" data-tab="hypotheses" aria-selected="false">06 <span>HYPOTHESIS ENGINE</span></button></nav></div>
     <div class="page-shell panels">
       <section id="panel-field" data-panel="field" aria-label="Field explorer">
         <div class="section-heading"><div><div class="eyebrow small">MAGNETIC INTENSITY / SCENARIO COMPARISON</div><h2>Field explorer</h2><p>Move a field-strength scenario through a logarithmic scale. Comparisons are arithmetic only, never estimates of biological response.</p></div><span class="pill">UNIT · µT</span></div>
@@ -107,8 +107,71 @@
         <article class="module data-preview"><div class="module-top"><div><div class="module-kicker">03 / INSPECT DATASET</div><h3>Imported records</h3></div><button id="download-csv" class="ghost-btn compact" type="button" disabled>EXPORT CHECKED CSV ↗</button></div><div id="dataset-preview" class="empty-preview">Your validated CSV preview appears here. Nothing is imported until you select a file.</div></article>
         <div class="module integrations"><div><div class="module-kicker">PLANNED / SOURCE ADAPTERS</div><h3>Ground, satellite and model data</h3><p>Future adapters can bring reproducible NOAA, ESA and observatory data into the field module, with units, epoch, location, uncertainties and provenance visible. NOAA's online geomagnetic calculator requires an API registration for programmatic use; this initial release makes no background requests.</p></div><a href="https://www.ncei.noaa.gov/products/world-magnetic-model" target="_blank" rel="noopener noreferrer">NOAA WMM ↗</a></div>
       </section>
+
+      <section id="panel-observatory" data-panel="observatory" hidden aria-label="Living geomagnetic observatory">
+        <div class="section-heading"><div><div class="eyebrow small">NOAA SWPC / LIVE FEEDS / SOURCE-BOUND TELEMETRY</div><h2>Living observatory <span class="version-label">v0.2</span></h2><p>Actual NOAA measurements and indexes, displayed with their own clocks and units. Nothing here is a live measurement of the strength of the magnetic field at your house.</p></div><span class="pill">LIVE SOURCE · NOAA SWPC</span></div>
+        <div class="notice observatory-warning"><span class="notice-glyph">i</span><p><strong>Different instruments, different physics.</strong> Planetary Kp is a unitless activity index. Solar-wind IMF Bt and Bz are measured upstream of Earth in nT. Neither gives surface geomagnetic field intensity F in µT or predicts neurological health.</p></div>
+        <div class="telemetry-grid">
+          <article class="module telemetry-card"><div class="module-top"><div><div class="module-kicker">NOAA SWPC / 3-HOUR PLANETARY Kp</div><h3>Geomagnetic activity</h3></div><span id="kp-status" class="data-state">CONNECTING</span></div>
+            <div class="telemetry-main"><strong id="kp-current">—</strong><div><span class="data-unit">Kp · INDEX, NO UNITS</span><span class="telemetry-subtitle" id="kp-observation">No observation received</span></div></div>
+            <div class="live-chart" id="kp-chart" aria-live="polite"><span class="feed-placeholder">Requesting NOAA observed Kp records…</span></div>
+            <div class="telemetry-foot"><span>OBSERVED / 3-HOUR BINS / UTC</span><a href="https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json" target="_blank" rel="noopener noreferrer">SOURCE JSON ↗</a></div>
+          </article>
+          <article class="module telemetry-card"><div class="module-top"><div><div class="module-kicker">NOAA SWPC / SOLAR WIND IMF</div><h3>Interplanetary magnetic field</h3></div><span id="imf-status" class="data-state">CONNECTING</span></div>
+            <div class="telemetry-main"><strong id="imf-bz">—</strong><div><span class="data-unit">Bz GSM · nT</span><span class="telemetry-subtitle" id="imf-observation">No observation received</span></div></div>
+            <div class="imf-details"><div><span>BT · TOTAL IMF</span><strong id="imf-bt">—</strong><small>nT</small></div><div><span>OBSERVATION LOCATION</span><strong class="telemetry-word">UPSTREAM</strong><small>NOT EARTH'S SURFACE</small></div></div>
+            <div class="telemetry-foot"><span>NEAR REAL-TIME SUMMARY · UTC</span><a href="https://services.swpc.noaa.gov/products/summary/solar-wind-mag-field.json" target="_blank" rel="noopener noreferrer">SOURCE JSON ↗</a></div>
+          </article>
+        </div>
+        <div class="feed-control-line"><p id="feed-updated" role="status" aria-live="polite">Connecting to NOAA. No sample numbers are substituted if a feed fails.</p><button class="ghost-btn compact" id="refresh-feeds" type="button">REFRESH NOAA FEEDS ↻</button></div>
+        <div class="workbench-grid globe-panels">
+          <article class="module globe-module"><div class="module-top"><div><div class="module-kicker">INTERACTIVE EARTH / GEOGRAPHIC ORIENTATION</div><h3>Field geography</h3></div><span class="outlined-label">SCHEMATIC · NOT FIELD DATA</span></div>
+            <div class="globe-wrap"><svg id="earth-globe" viewBox="0 0 540 440" role="img" aria-label="Rotatable schematic Earth with geographical grid and labelled research region markers"></svg></div>
+            <div class="globe-control"><label for="globe-longitude">CENTRAL LONGITUDE</label><output id="globe-longitude-value" for="globe-longitude">−40°</output><input type="range" id="globe-longitude" min="-180" max="180" step="2" value="-40"></div>
+            <div class="globe-presets"><button type="button" data-globe="-40">SOUTH ATLANTIC</button><button type="button" data-globe="-100">AMERICAS</button><button type="button" data-globe="100">ASIA–PACIFIC</button></div>
+            <p class="globe-note">Globe outlines and markers are illustrative reference geometry. The South Atlantic marker is schematic, not an officially derived anomaly contour or measured minimum position. Rotation changes the viewpoint, not the data.</p>
+          </article>
+          <article class="module history-module"><div class="module-top"><div><div class="module-kicker">ESA SWARM / PUBLISHED CORE-FIELD ANALYSIS</div><h3>Eleven years of change</h3></div><span class="outlined-label">2014.0 → 2025.0</span></div>
+            <p class="module-desc">Three geographically distinct surface-field extrema reported by Finlay et al. (2025). These are <strong>model-derived epoch estimates</strong>, not Kp readings or data between the two years.</p>
+            <label class="history-select" for="history-region">RESEARCH REGION <select id="history-region"><option value="saa">South Atlantic minimum</option><option value="canada">Canada northern maximum</option><option value="siberia">Siberia northern maximum</option></select></label>
+            <div class="history-stats"><div><span>2014.0</span><strong id="history-first">22.430 <small>µT</small></strong></div><div><span>2025.0</span><strong id="history-last">22.094 <small>µT</small></strong></div></div>
+            <div class="history-delta" id="history-delta">−0.336 µT across reported epochs</div>
+            <div class="history-visual" id="history-visual" aria-label="Paired columns for two published magnetic field epoch values"></div>
+            <div class="chart-caption"><span>NO INTERMEDIATE VALUES / NO FORECAST</span><a href="https://doi.org/10.1016/j.pepi.2025.107447" target="_blank" rel="noopener noreferrer">SWARM STUDY ↗</a></div>
+          </article>
+        </div>
+        <div class="module observatory-method"><div><div class="module-kicker">MEASUREMENT WALL</div><h3>Four streams. Four distinct meanings.</h3></div><div class="method-streams">
+          <div><span class="stream-id">01</span><strong>SWPC Kp</strong><p>Planet-wide 3-hour geomagnetic <em>activity index</em>. Unitless. Live feed.</p></div>
+          <div><span class="stream-id">02</span><strong>SWPC IMF Bz/Bt</strong><p>Solar-wind magnetic components/strength upstream of Earth, measured in <em>nT</em>. Live summary.</p></div>
+          <div><span class="stream-id">03</span><strong>WMM2025</strong><p>Earth's navigational <em>main-field model</em>, not a live sensor. NOAA source linked.</p></div>
+          <div><span class="stream-id">04</span><strong>Swarm analysis</strong><p>Published 2014 and 2025 surface <em>core-field extrema</em> in µT. Historical, not real time.</p></div>
+        </div><div class="method-links"><a href="https://www.ncei.noaa.gov/products/world-magnetic-model" target="_blank" rel="noopener noreferrer">NOAA WMM2025 ↗</a><a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" rel="noopener noreferrer">NOAA Kp EXPLANATION ↗</a></div></div>
+      </section>
+      <section id="panel-hypotheses" data-panel="hypotheses" hidden aria-label="Falsifiable hypothesis engine">
+        <div class="section-heading"><div><div class="eyebrow small">NBG / DCF / SCIENTIFIC PRE-REGISTRATION</div><h2>Hypothesis engine <span class="version-label">v0.2</span></h2><p>Define predictions in advance, specify a falsification test, and export a frozen protocol record. This is a protocol designer, not a biological simulation or a claim of experimental success.</p></div><span class="pill">NOT EXECUTED</span></div>
+        <div class="workbench-grid">
+          <form id="hypothesis-form" class="module hypothesis-form" novalidate><div class="module-kicker">01 / DESIGN A TEST</div><h3>Research preregistration</h3>
+            <label for="hyp-proposal">HYPOTHESIS FAMILY</label><select id="hyp-proposal"><option value="replication-nsc">Mouse neural stem-cell replication</option><option value="mitochondria">Mitochondrial mediation</option><option value="nbg-dcf">NBG / DCF predictive challenge</option></select>
+            <p class="proposal-description" id="proposal-description"></p>
+            <div class="form-columns"><div><label for="hyp-system">SYSTEM</label><select id="hyp-system"><option value="cultured mouse cells">Cultured mouse cells</option><option value="mouse">Mouse</option><option value="computational / geophysical">Computational / geophysical</option></select></div><div><label for="hyp-prediction">PREDICTION</label><select id="hyp-prediction"><option value="decrease">Decrease</option><option value="increase">Increase</option><option value="change">Change, non-directional</option><option value="no directional claim">No directional claim</option><option value="outperform">Outperform baseline</option></select></div></div>
+            <div class="form-columns"><div><label for="hyp-treatment">TREATMENT · µT</label><input type="number" min="0.01" max="80" step="0.01" id="hyp-treatment" value="0.29"></div><div><label for="hyp-control">COMPARATOR · µT</label><input type="number" min="0.01" max="80" step="0.01" id="hyp-control" value="55.26"></div></div>
+            <label for="hyp-replicates">PLANNED INDEPENDENT REPLICATES / CONDITION</label><input type="number" id="hyp-replicates" min="3" max="10000" step="1" value="8">
+            <label for="hyp-outcome">PRE-SPECIFIED MEASURABLE OUTCOME</label><input id="hyp-outcome" type="text" maxlength="220" value="Mouse neural stem-cell proliferation count">
+            <label for="hyp-falsification">WHAT RESULT WOULD FALSIFY THE CLAIM?</label><textarea id="hyp-falsification" rows="4" maxlength="1000">If the proliferation metric does not decrease relative to the matched randomized control under the prespecified analysis, the directional claim is rejected.</textarea>
+            <div class="study-checks"><label><input type="checkbox" id="hyp-blinding" checked> Blinding planned</label><label><input type="checkbox" id="hyp-randomization" checked> Randomization planned</label></div>
+            <button class="primary-btn hyp-build" type="submit">AUDIT & FREEZE PROTOCOL ↗</button>
+          </form>
+          <article class="module hyp-output"><div class="module-kicker">02 / PROVENANCE GATE</div><h3>Test readiness</h3><div id="hyp-audit" class="audit-box" role="status" aria-live="polite">Complete the design and audit the protocol. All records remain proposed until an independent experiment or validation run has occurred.</div>
+            <div class="protocol-state"><div><span>PROTOCOL</span><strong>PROPOSED</strong></div><div><span>EVIDENCE</span><strong>NOT COLLECTED</strong></div><div><span>SCIENTIFIC CLAIM</span><strong>NOT ESTABLISHED</strong></div></div>
+            <label class="output-label" for="hyp-json">EXPORTABLE SCIENTIFIC RECORD</label><textarea readonly id="hyp-json" spellcheck="false" rows="13" placeholder="Validated protocol JSON will appear here."></textarea>
+            <button id="hyp-download" type="button" class="ghost-btn compact" disabled>DOWNLOAD PREREGISTRATION JSON ↗</button>
+            <p class="output-note">Export preserves the hypothesis as INFERRED / PROPOSED_NOT_EXECUTED. Passing a form audit only establishes completeness of this template; it does not validate a model, establish power, grant ethics approval, or demonstrate biology.</p>
+          </article>
+        </div>
+        <div class="module hypothesis-ground"><span class="boundary-mark">≠</span><div><h3>The NBG / DCF bridge stays falsifiable.</h3><p>A mathematical analogy is not yet a geophysical law. Any NBG or DCF approach must beat specified conventional baselines on held-out data, with frozen parameters, timestamps, uncertainty and failure cases. This module records a proposed challenge. It does not claim that any independent test has succeeded.</p></div></div>
+      </section>
     </div>
-    <footer class="footer page-shell"><div><strong>GBRM<span class="brand-caret">/</span></strong><small>GEOMAGNETIC BIOLOGY RESEARCH MODULE</small></div><p>Evidence first. Assumptions visible. No invented biology.</p><div class="footer-links"><a href="https://github.com/MichaelWave369/GBRM" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="./docs/METHODS.md" target="_blank" rel="noopener noreferrer">METHODS ↗</a></div></footer>
+    <footer class="footer page-shell"<div><strong>GBRM<span class="brand-caret">/</span></strong><small>GEOMAGNETIC BIOLOGY RESEARCH MODULE</small></div><p>Evidence first. Assumptions visible. No invented biology.</p><div class="footer-links"><a href="https://github.com/MichaelWave369/GBRM" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="./docs/METHODS.md" target="_blank" rel="noopener noreferrer">METHODS ↗</a></div></footer>
   </main>
 </body>
 </html>

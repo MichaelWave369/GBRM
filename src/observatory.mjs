@@ -84,9 +84,11 @@ export function auditProtocol(input) {
   if(!Object.hasOwn(PROPOSALS,input.proposal)) errors.push("Choose a registered hypothesis.");
   if(!SPECIES.includes(input.system)) errors.push("Choose a listed study system.");
   const treatment=Number(input.treatment),control=Number(input.control);
-  if(!Number.isFinite(treatment)||treatment<0.01||treatment>80) errors.push("Treatment must be 0.01–80 µT.");
-  if(!Number.isFinite(control)||control<0.01||control>80) errors.push("Comparator must be 0.01–80 µT.");
-  if(Number.isFinite(treatment)&&Number.isFinite(control)&&Math.abs(treatment-control)<0.0001) errors.push("Treatment and comparator must differ.");
+  if(input.proposal!=="nbg-dcf") {
+    if(!Number.isFinite(treatment)||treatment<0.01||treatment>80) errors.push("Treatment must be 0.01–80 µT.");
+    if(!Number.isFinite(control)||control<0.01||control>80) errors.push("Comparator must be 0.01–80 µT.");
+    if(Number.isFinite(treatment)&&Number.isFinite(control)&&Math.abs(treatment-control)<0.0001) errors.push("Treatment and comparator must differ.");
+  }
   const replicates=Number(input.replicates);
   if(!Number.isInteger(replicates)||replicates<3||replicates>10000) errors.push("Plan 3–10,000 independent replicates per condition.");
   if(!PREDICTIONS.includes(input.prediction)) errors.push("Select a directional prediction.");
@@ -99,6 +101,7 @@ export function auditProtocol(input) {
   if(input.proposal==="nbg-dcf") {
     if(input.system!=="computational / geophysical") errors.push("NBG/DCF challenge must use a computational/geophysical system.");
     if(input.prediction!=="outperform") errors.push("NBG/DCF challenge requires an outperform-baseline prediction.");
+    if(!["persistence","linear trend","WMM2025 reference"].includes(input.baseline)) errors.push("Specify an independently reproducible comparison baseline.");
     warnings.push("A protocol is not an executed out-of-sample model test.");
   } else if(input.system==="computational / geophysical") {
     errors.push("Biological protocols require an appropriate biological model.");
@@ -121,7 +124,8 @@ export function exportProtocol(input,createdAtUTC) {
     hypothesis:input.proposal,
     category:proposal.category,
     modelSystem:input.system,
-    exposures:{treatment_uT:Number(input.treatment),comparator_uT:Number(input.control)},
+    exposures:input.proposal==="nbg-dcf" ? null : {treatment_uT:Number(input.treatment),comparator_uT:Number(input.control)},
+    computationalBaseline:input.proposal==="nbg-dcf" ? input.baseline : null,
     replicatesPerCondition:Number(input.replicates),
     outcome:String(input.outcome).trim(),
     prediction:input.prediction,

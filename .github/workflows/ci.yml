@@ -1,0 +1,22 @@
+name: Verify research workbench
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Pure logic and provenance checks
+        run: node --test
+      - name: Check browser module syntax
+        run: node --check src/app.mjs && node --check src/logic.mjs
+      - name: Verify static entrypoints
+        run: test -f index.html && test -f styles.css && test -f src/app.mjs

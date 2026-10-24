@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "kind": "source-reported-model-estimates",
+    "label": "SAA minimum, modelled total surface intensity",
+    "sourceId": "finlay2025",
+    "measuredAt": "Swarm mission observations interpreted in a field model",
+    "units": "µT",
+    "notLive": true
+  },
+  "records": [
+    {
+      "epoch": 2014,
+      "field_uT": 22.43
+    },
+    {
+      "epoch": 2025,
+      "field_uT": 22.094
+    }
+  ]
+}

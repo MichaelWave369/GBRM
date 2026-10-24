@@ -1,0 +1,65 @@
+[
+  {
+    "id": "zhang2021",
+    "title": "Long-term exposure to a hypomagnetic field attenuates adult hippocampal neurogenesis and cognition",
+    "authors": "Zhang et al.",
+    "year": 2021,
+    "kind": "peer-reviewed experiment",
+    "url": "https://doi.org/10.1038/s41467-021-21468-x",
+    "description": "Male mice exposed to 0.29 ± 0.01 µT versus local 55.26 ± 0.05 µT; neurogenesis, cognition, ROS measurements."
+  },
+  {
+    "id": "finlay2025",
+    "title": "Core field changes from eleven years of Swarm satellite observations",
+    "authors": "Finlay et al.",
+    "year": 2025,
+    "kind": "peer-reviewed geophysics",
+    "url": "https://doi.org/10.1016/j.pepi.2025.107447",
+    "description": "Swarm-derived surface-field SAA minimum: 22,430 nT (2014.0) and 22,094 nT (2025.0), a 336 nT decline."
+  },
+  {
+    "id": "noaa2025",
+    "title": "World Magnetic Model 2025",
+    "authors": "NOAA NCEI / BGS",
+    "year": 2024,
+    "kind": "official geomagnetic model",
+    "url": "https://www.ncei.noaa.gov/products/world-magnetic-model",
+    "description": "WMM2025 standard main-field model; local total intensity F depends on coordinates, altitude and date; not a real-time sensor."
+  },
+  {
+    "id": "ren2025",
+    "title": "GSK-3β and mTOR Phosphorylation Mediate the Reversible Regulation of Hypomagnetic Field on Adult Neural Stem Cell Proliferation",
+    "authors": "Ren et al.",
+    "year": 2025,
+    "kind": "peer-reviewed experiment",
+    "url": "https://doi.org/10.1111/ejn.70202",
+    "description": "Investigates reversible adult neural stem cell effects and phosphorylation pathways in hypomagnetic exposure."
+  },
+  {
+    "id": "ren2026",
+    "title": "Mitochondria as key targets underlying hypomagnetic field-induced biological effects",
+    "authors": "Ren et al.",
+    "year": 2026,
+    "kind": "peer-reviewed review",
+    "url": "https://doi.org/10.1016/j.isci.2025.114389",
+    "description": "Review proposes mitochondrial quality-control pathways and potential roles for iron-sulfur clusters; not proof of a single mechanism."
+  },
+  {
+    "id": "egu2026",
+    "title": "The Effects of Extremely Low Geomagnetic Field Intensity on the Mammalian Central Nervous System",
+    "authors": "Ren et al.",
+    "year": 2026,
+    "kind": "conference abstract",
+    "url": "https://doi.org/10.5194/egusphere-egu26-15577",
+    "description": "Conference summary of hypomagnetic effects; distinct evidence level from a fully reported peer-reviewed experiment."
+  },
+  {
+    "id": "reed2026",
+    "title": "Hypomagnetic fields modulate lifespan, physical ability and mitochondrial metabolism in a Pink1 model of neurodegeneration",
+    "authors": "Reed et al.",
+    "year": 2026,
+    "kind": "peer-reviewed model-organism experiment",
+    "url": "https://doi.org/10.18632/aging.206424",
+    "description": "A neurodegeneration model reports context-dependent biological responses, underscoring that effects should not be simplified to a universal direction."
+  }
+]

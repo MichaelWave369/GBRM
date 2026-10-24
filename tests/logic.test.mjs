@@ -1,0 +1,14 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {compareField,logPosition,sliderValueToField,snapshotDelta,parseFieldCSV,toCsv} from "../src/logic.mjs";
+import {readFileSync} from "node:fs";
+test("experimental point has ratio one",()=>assert.equal(compareField(0.29).versusExperimental,1));
+test("SAA value is >76 experimental exposures",()=>assert.ok(compareField(22.094).versusExperimental > 76));
+test("definition is descriptive, never human risk",()=>{assert.equal(compareField(4.999).isHypomagneticDefinition,true);assert.equal(compareField(5).isHypomagneticDefinition,false)});
+test("log slider positions round-trip",()=>{for(const n of [0.01,0.29,5,22.094,55.26,80])assert.ok(Math.abs(sliderValueToField(logPosition(n))-n)/n < 0.00008)});
+test("invalid fields are refused",()=>{for (const n of [-1,0,Infinity,NaN,81]) assert.throws(()=>compareField(n))});
+test("snapshot change is -0.336 uT",()=>{const d=snapshotDelta([{epoch:2025,field_uT:22.094},{epoch:2014,field_uT:22.430}]);assert.ok(Math.abs(d.delta_uT+0.336)<1e-10);assert.equal(d.first.epoch,2014)});
+test("strict CSV with provenance",()=>{const rows=parseFieldCSV("year,intensity_ut,source\n2024,22.4,imported");assert.equal(rows[0].provenance,"USER_SUPPLIED_UNVERIFIED");assert.match(toCsv(rows),/USER_SUPPLIED_UNVERIFIED/)});
+test("reject malformed CSV and HTML payload",()=>{assert.throws(()=>parseFieldCSV("year,intensity_ut,source\n2024,22.4,<script>"));assert.throws(()=>parseFieldCSV("year,intensity_ut\n2025,44"))});
+test("ledger sources resolve and provenance is enumerated",()=>{const ledger=JSON.parse(readFileSync(new URL("../data/ledger.json",import.meta.url)));const sources=JSON.parse(readFileSync(new URL("../data/sources.json",import.meta.url)));const ids=new Set(sources.map(s=>s.id));assert.ok(ledger.length>=8);for(const row of ledger){assert.ok(["OBSERVED","VERIFIED","INFERRED","UNKNOWN"].includes(row.provenance));assert.ok(row.sources.every(id=>ids.has(id)));assert.ok(row.limits)}});
+test("published snapshots remain source-anchored and not live",()=>{const d=JSON.parse(readFileSync(new URL("../data/field-snapshots.json",import.meta.url)));assert.equal(d.metadata.notLive,true);assert.equal(snapshotDelta(d.records).delta_uT,-0.336)});

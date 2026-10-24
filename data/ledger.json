@@ -1,0 +1,133 @@
+[
+  {
+    "id": "EXP-001",
+    "title": "Reduced neurogenesis in a mouse hypomagnetic experiment",
+    "claim": "In a controlled study of adult male mice, long-term 0.29 µT exposure was associated with reduced adult hippocampal neurogenesis relative to a 55.26 µT local field.",
+    "provenance": "OBSERVED",
+    "domain": "biology",
+    "species": "mouse",
+    "scope": "Specific laboratory exposure and experimental protocol",
+    "limits": "Not a dose-response model; does not establish human outcomes or effects at typical terrestrial intensities.",
+    "sources": [
+      "zhang2021"
+    ]
+  },
+  {
+    "id": "EXP-002",
+    "title": "Mouse cognition changed under experimental exposure",
+    "claim": "The 2021 mouse study reported impairments in selected hippocampus-dependent learning and memory tasks; some findings improved after return to normal-field conditions.",
+    "provenance": "OBSERVED",
+    "domain": "biology",
+    "species": "mouse",
+    "scope": "Behavioral measures in that experiment",
+    "limits": "Does not mean a magnetic field is an on/off switch for cognition.",
+    "sources": [
+      "zhang2021"
+    ]
+  },
+  {
+    "id": "GEO-001",
+    "title": "South Atlantic minimum decreased across Swarm epochs",
+    "claim": "A Swarm-derived model found the minimum surface intensity fell from 22.430 µT in 2014.0 to 22.094 µT in 2025.0.",
+    "provenance": "OBSERVED",
+    "domain": "geophysics",
+    "species": "not applicable",
+    "scope": "Swarm-inferred core field at Earth mean spherical surface; two reported epochs",
+    "limits": "Not a live station reading, not a global average, and not a measurement at a person's location.",
+    "sources": [
+      "finlay2025"
+    ]
+  },
+  {
+    "id": "GEO-002",
+    "title": "WMM is a model rather than a biosensor",
+    "claim": "NOAA WMM2025 estimates Earth's main magnetic-field components and secular variation, including total intensity F, from geography, altitude and date.",
+    "provenance": "VERIFIED",
+    "domain": "geophysics",
+    "species": "not applicable",
+    "scope": "NOAA documentation",
+    "limits": "WMM outputs should not be labeled live measurements.",
+    "sources": [
+      "noaa2025"
+    ]
+  },
+  {
+    "id": "BIO-003",
+    "title": "ROS responses are cell and context dependent",
+    "claim": "The 2021 study reported lower reactive oxygen species in adult neural stem cells under the studied hypomagnetic conditions, with changes in cell function.",
+    "provenance": "OBSERVED",
+    "domain": "biology",
+    "species": "mouse",
+    "scope": "Neural stem cell ROS in the 2021 study",
+    "limits": "Do not automatically generalize the direction of ROS change to every brain cell or experiment.",
+    "sources": [
+      "zhang2021"
+    ]
+  },
+  {
+    "id": "BIO-004",
+    "title": "Mitochondria and iron-sulfur clusters are candidate mechanisms",
+    "claim": "A 2026 review discusses mitochondrial function and iron-sulfur clusters as possible mediators of hypomagnetic effects.",
+    "provenance": "INFERRED",
+    "domain": "mechanisms",
+    "species": "multiple model organisms",
+    "scope": "Review-level mechanistic synthesis",
+    "limits": "A proposed mechanism is not experimental confirmation of a unique causal pathway.",
+    "sources": [
+      "ren2026"
+    ]
+  },
+  {
+    "id": "BIO-005",
+    "title": "Molecular pathways may support reversibility",
+    "claim": "A 2025 mouse/neural stem-cell experiment implicated GSK-3β and mTOR phosphorylation in field-dependent changes in stem-cell proliferation.",
+    "provenance": "OBSERVED",
+    "domain": "mechanisms",
+    "species": "mouse / cells",
+    "scope": "Specific assay and exposure",
+    "limits": "Pathway implication does not prove direct magnetic sensing by either protein.",
+    "sources": [
+      "ren2025"
+    ]
+  },
+  {
+    "id": "BIO-006",
+    "title": "Effects may depend on organism and disease model",
+    "claim": "A 2026 Pink1 neurodegeneration model study investigated hypomagnetic effects on lifespan, physical ability and mitochondrial metabolism.",
+    "provenance": "VERIFIED",
+    "domain": "biology",
+    "species": "model organism",
+    "scope": "Disease-model study",
+    "limits": "Cannot be generalized to healthy human populations or used as evidence that weaker fields are universally harmful or beneficial.",
+    "sources": [
+      "reed2026"
+    ]
+  },
+  {
+    "id": "ABS-001",
+    "title": "Neuroinflammation is discussed in a 2026 abstract",
+    "claim": "The 2026 EGU abstract discusses oxidative stress and neuroinflammatory pathways under hypomagnetic experimental conditions.",
+    "provenance": "INFERRED",
+    "domain": "mechanisms",
+    "species": "mammalian models",
+    "scope": "Conference abstract",
+    "limits": "Abstract alone provides insufficient details to independently assess all experiments and strengths of inference.",
+    "sources": [
+      "egu2026"
+    ]
+  },
+  {
+    "id": "HUM-001",
+    "title": "Present field weakening is harming human brains",
+    "claim": "It is not established that current changes in Earth's magnetic field cause impaired neurogenesis or cognitive decline in humans.",
+    "provenance": "UNKNOWN",
+    "domain": "human health",
+    "species": "human",
+    "scope": "Evidence gap",
+    "limits": "Do not promote this as a demonstrated result or derive a human risk threshold from mouse hypomagnetic exposures.",
+    "sources": [
+      "zhang2021",
+      "finlay2025"
+    ]
+  }
+]

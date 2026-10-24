@@ -61,5 +61,23 @@
     "kind": "peer-reviewed model-organism experiment",
     "url": "https://doi.org/10.18632/aging.206424",
     "description": "A neurodegeneration model reports context-dependent biological responses, underscoring that effects should not be simplified to a universal direction."
+  },
+  {
+    "id": "swpc-kp",
+    "title": "NOAA planetary K-index observations",
+    "authors": "NOAA Space Weather Prediction Center",
+    "year": 2026,
+    "kind": "continuously updated official NOAA observational index",
+    "url": "https://www.swpc.noaa.gov/products/planetary-k-index",
+    "description": "Observed planetary 3-hour Kp index; unitless and not a direct measurement of Earth surface total field F. Current machine feed: https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json. Product format changed to arrays of JSON objects in March 2026."
+  },
+  {
+    "id": "swpc-imf",
+    "title": "NOAA near-real-time solar wind magnetic field summary",
+    "authors": "NOAA Space Weather Prediction Center",
+    "year": 2026,
+    "kind": "continuously updated upstream solar-wind summary",
+    "url": "https://services.swpc.noaa.gov/products/summary/solar-wind-mag-field.json",
+    "description": "Bt and GSM Bz in nanotesla, measured upstream in solar wind and not equal to the surface geomagnetic main field. Feed includes timestamps."
   }
 ]

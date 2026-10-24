@@ -129,5 +129,34 @@
       "zhang2021",
       "finlay2025"
     ]
+  },
+  {
+    "id": "GEO-003",
+    "title": "Kp and IMF are not Earth surface field intensity",
+    "claim": "NOAA SWPC's planetary Kp index has no units, while upstream interplanetary magnetic field Bt/Bz is reported in nanotesla. Neither may be interpreted as local terrestrial F in microtesla.",
+    "provenance": "VERIFIED",
+    "domain": "geophysics",
+    "species": "not applicable",
+    "scope": "NOAA SWPC product definitions and data units",
+    "limits": "Do not infer regional surface magnetic strength, or biological risk, from Kp or upstream Bz.",
+    "sources": [
+      "swpc-kp",
+      "swpc-imf",
+      "noaa2025"
+    ]
+  },
+  {
+    "id": "MOD-001",
+    "title": "NBG/DCF geomagnetic coupling remains a proposed computational hypothesis",
+    "claim": "A potential NBG/DCF-based predictive model would require frozen parameters and independent, held-out comparisons against conventional geophysical baselines before a relationship could be asserted.",
+    "provenance": "INFERRED",
+    "domain": "computational hypothesis",
+    "species": "not applicable",
+    "scope": "Proposed test methodology, not an empirically observed relationship",
+    "limits": "No independent validation or field-to-biological-causation result is claimed by the v0.2 preregistration editor.",
+    "sources": [
+      "finlay2025",
+      "noaa2025"
+    ]
   }
 ]

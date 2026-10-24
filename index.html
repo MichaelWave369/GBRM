@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071218">
+  <meta name="description" content="GBRM is an evidence-first geomagnetic biology research workbench. Explore magnetic field comparisons, published experiments, and a scientific claim ledger.">
+  <title>GBRM · Geomagnetic Biology Research Module</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.mjs"></script>
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to research</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="GBRM research workbench home"><span class="brand-icon" aria-hidden="true">Φ</span><span class="brand-name">GBRM<span class="brand-caret">/</span><small>FIELD RESEARCH</small></span></a>
+    <div class="topbar-right"><span class="signal"><span class="signal-dot"></span> RESEARCH MODE</span><a href="https://github.com/MichaelWave369/GBRM" target="_blank" rel="noopener noreferrer" class="source-link">GITHUB ↗</a></div>
+  </header>
+  <main id="main">
+    <section class="hero page-shell">
+      <div class="hero-copy"><div class="eyebrow"><span class="eyebrow-rule"></span> THE FIELD / THE BIOLOGY / THE EVIDENCE</div>
+        <h1>The invisible field.<br><em>Visible evidence.</em></h1>
+        <p>Explore Earth's magnetic environment alongside carefully sourced biology research. Every claim has provenance. Every model has limits.</p>
+        <div class="hero-actions"><button type="button" class="primary-btn" data-goto="field">EXPLORE FIELD <span aria-hidden="true">↗</span></button><button type="button" class="ghost-btn" data-goto="ledger">OPEN EVIDENCE LEDGER <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="orbit orbit-four"></div>
+        <div class="orbit-axis"></div><div class="orbit-core"><span>Φ</span></div>
+        <div class="float-label north-label">FIELD VECTOR <strong>F</strong></div><div class="float-label south-label">RESEARCH / 001</div><span class="star a"></span><span class="star b"></span><span class="star c"></span>
+      </div>
+    </section>
+    <div class="page-shell"><div class="notice"><span class="notice-glyph">i</span><p><strong>Evidence boundary.</strong> Mouse hypomagnetic experiments do not establish human health effects from current terrestrial magnetic-field changes. This workbench never predicts neurological harm.</p><a href="https://github.com/MichaelWave369/GBRM/blob/main/docs/METHODS.md" target="_blank" rel="noopener noreferrer">METHODS ↗</a></div></div>
+    <div class="page-shell"><nav class="tabs" aria-label="Research module"><button type="button" class="tab active" data-tab="field" aria-selected="true">01 <span>FIELD EXPLORER</span></button><button type="button" class="tab" data-tab="biology" aria-selected="false">02 <span>BIOLOGY LAB</span></button><button type="button" class="tab" data-tab="ledger" aria-selected="false">03 <span>EVIDENCE LEDGER</span></button><button type="button" class="tab" data-tab="datasets" aria-selected="false">04 <span>DATA STUDIO</span></button></nav></div>
+    <div class="page-shell panels">
+      <section id="panel-field" data-panel="field" aria-label="Field explorer">
+        <div class="section-heading"><div><div class="eyebrow small">MAGNETIC INTENSITY / SCENARIO COMPARISON</div><h2>Field explorer</h2><p>Move a field-strength scenario through a logarithmic scale. Comparisons are arithmetic only, never estimates of biological response.</p></div><span class="pill">UNIT · µT</span></div>
+        <div class="metric-grid">
+          <article class="metric"><div class="metric-name">MOUSE EXPERIMENT <span>↗</span></div><strong class="metric-value">0.29 <small>µT</small></strong><p>Hypomagnetic lab exposure / 2021</p><span class="metric-footer">Zhang et al. · controlled study</span></article>
+          <article class="metric"><div class="metric-name">LOCAL CONTROL <span>↗</span></div><strong class="metric-value">55.26 <small>µT</small></strong><p>Matched local field / 2021</p><span class="metric-footer">Zhang et al. · control condition</span></article>
+          <article class="metric"><div class="metric-name">SAA MINIMUM · 2025 <span>↗</span></div><strong class="metric-value">22.094 <small>µT</small></strong><p>Swarm-derived surface-field model</p><span class="metric-footer">Finlay et al. · not live</span></article>
+          <article class="metric accent"><div class="metric-name">SAA CHANGE · 2014–2025 <span>↘</span></div><strong class="metric-value">−0.336 <small>µT</small></strong><p>Difference between published epochs</p><span class="metric-footer">Not a projection of future change</span></article>
+        </div>
+        <div class="workbench-grid">
+          <article class="module panel-controls">
+            <div class="module-top"><div><div class="module-kicker">01 / SIMULATION INPUT</div><h3>Set the magnetic field</h3></div><span class="outlined-label">SCENARIO, NOT SENSOR</span></div>
+            <div class="reading"><output id="field-value" for="field-range">22.094</output><span>MICROTESLA · µT</span></div>
+            <label class="input-label" for="field-range">FIELD INTENSITY <small>LOGARITHMIC SCALE</small></label>
+            <input id="field-range" type="range" min="0" max="100" step="0.01" value="85" aria-label="Scenario magnetic intensity on logarithmic slider">
+            <div class="range-labels"><span>0.01 µT</span><span>80 µT</span></div>
+            <div class="direct-input"><label for="field-input">EXACT VALUE (µT)</label><input id="field-input" type="number" min="0.01" max="80" step="0.001" value="22.094"></div>
+            <div class="preset-title">RESEARCH PRESETS</div>
+            <div class="presets"><button data-field="0.29" type="button">MOUSE HMF · 0.29</button><button data-field="5" type="button">HMF MARKER · 5</button><button data-field="22.094" type="button" class="active">SAA 2025 · 22.094</button><button data-field="55.26" type="button">CONTROL · 55.26</button></div>
+            <div class="form-note" id="field-input-error" role="status"></div>
+          </article>
+          <article class="module panel-spectrum">
+            <div class="module-top"><div><div class="module-kicker">02 / INTENSITY SPECTRUM</div><h3>Context across scales</h3></div><span class="outlined-label">LOG VIEW</span></div>
+            <div class="spectrum-wrapper">
+              <div class="spectrum"><div class="spectrum-zone"></div><div class="spectrum-marker exp" style="left:37.5%"><div class="marker-dot"></div><div class="marker-tag">LAB<br>0.29</div></div><div class="spectrum-marker saa" id="saa-marker"><div class="marker-dot"></div><div class="marker-tag">SAA 2025<br>22.094</div></div><div class="spectrum-marker ctrl"><div class="marker-dot"></div><div class="marker-tag">CTRL<br>55.26</div></div><div class="spectrum-marker user" id="scenario-marker"><div class="marker-dot"></div><div class="marker-tag" id="scenario-marker-label">YOUR<br>FIELD</div></div></div>
+              <div class="spectrum-foot"><span>LOWER FIELD</span><span>HIGHER FIELD</span></div>
+            </div>
+            <div class="comparison-stats"><div><span>VS 2021 MOUSE EXPERIMENT</span><strong id="experimental-ratio">76.19×</strong><small>selected field / 0.29 µT</small></div><div><span>VS LOCAL LAB CONTROL</span><strong id="control-percent">39.98%</strong><small>selected field / 55.26 µT</small></div></div>
+            <div id="definition-note" class="method-note"></div>
+          </article>
+        </div>
+        <div class="workbench-grid lower">
+          <article class="module trend-module">
+            <div class="module-top"><div><div class="module-kicker">03 / REPORTED EPOCHS</div><h3>South Atlantic minimum</h3></div><span class="outlined-label">SWARM · 2014–2025</span></div>
+            <p class="module-desc">Two published, model-derived surface intensity minima. Not a live feed, local measurement or extrapolated forecast.</p>
+            <div id="epoch-chart" class="epoch-chart" aria-label="Two Swarm field minimum values"></div>
+            <div class="chart-caption"><span>REFERENCE: FINLAY ET AL. 2025</span><a href="https://doi.org/10.1016/j.pepi.2025.107447" target="_blank" rel="noopener noreferrer">OPEN PAPER ↗</a></div>
+          </article>
+          <article class="module caution-module">
+            <div class="module-top"><div><div class="module-kicker">04 / INTERPRETATION</div><h3>What a ratio can tell us</h3></div><span class="outlined-label">NO BIOLOGICAL EXTRAPOLATION</span></div>
+            <div class="interpretation" id="field-interpretation"></div>
+            <div class="rule"></div>
+            <div class="note-row"><span class="small-cross">+</span><p>A magnetic field is a vector. Total intensity does not capture direction, frequency, variability, exposure duration or biological context.</p></div>
+            <div class="note-row"><span class="small-cross">+</span><p>The literature's &lt;5 µT hypomagnetic designation is <strong>not</strong> a human safety cutoff.</p></div>
+          </article>
+        </div>
+      </section>
+      <section id="panel-biology" data-panel="biology" hidden aria-label="Biology laboratory">
+        <div class="section-heading"><div><div class="eyebrow small">NEUROGENESIS / METABOLISM / MECHANISMS</div><h2>Biology laboratory</h2><p>Follow the published chain without confusing evidence of an effect with certainty about its mechanism.</p></div><span class="pill">MODEL ORGANISMS</span></div>
+        <div class="biology-banner"><span class="large-num">01</span><div><span class="module-kicker">FOCAL EXPERIMENT</span><h3>Zhang et al. · Nature Communications · 2021</h3><p>Adult male mice exposed to a 0.29 ± 0.01 µT hypomagnetic field versus a 55.26 ± 0.05 µT local control field. The researchers reported reduced adult hippocampal neurogenesis and selected cognitive impairments, with some reversibility.</p><a href="https://doi.org/10.1038/s41467-021-21468-x" target="_blank" rel="noopener noreferrer">READ PEER-REVIEWED PAPER ↗</a></div></div>
+        <div class="biology-grid">
+          <article class="module biology-card"><span class="bio-icon">01 /</span><span class="observation">OBSERVED IN MICE</span><h3>Adult neurogenesis</h3><p>Reduced proliferation of certain adult neural stem cells was reported under long-term experimental weak-field exposure.</p><span class="bio-bottom">NOT A HUMAN EFFECT ESTIMATE</span></article>
+          <article class="module biology-card"><span class="bio-icon">02 /</span><span class="observation">CELL-SPECIFIC FINDING</span><h3>ROS signaling</h3><p>The 2021 paper reported lower reactive oxygen species within studied neural stem cells. ROS behavior differs by cell type and context.</p><span class="bio-bottom">DIRECTION MUST BE SCOPED</span></article>
+          <article class="module biology-card"><span class="bio-icon">03 /</span><span class="inference">PROPOSED MECHANISM</span><h3>Mitochondrial pathways</h3><p>A 2026 review discusses mitochondria and iron-sulfur clusters as candidate pathways, not a confirmed universal mechanism.</p><span class="bio-bottom">HYPOTHESIS, NOT CAUSAL PROOF</span></article>
+          <article class="module biology-card"><span class="bio-icon">04 /</span><span class="unknown">UNKNOWN HUMAN RELEVANCE</span><h3>Today's terrestrial field</h3><p>No demonstrated causal link from today's field weakening to declining human cognition. Mouse exposure is not a human safety threshold.</p><span class="bio-bottom">DO NOT INFER HEALTH RISK</span></article>
+        </div>
+        <div class="module boundary"><span class="boundary-mark">≠</span><div><h3>Similar words are not equivalent measurements.</h3><p>Hypomagnetic mouse laboratory conditions, Swarm geomagnetic models, ground sensor readings, Kp indices and neural electrical activity describe different things. GBRM keeps their measurement types and provenance separate.</p></div></div>
+      </section>
+      <section id="panel-ledger" data-panel="ledger" hidden aria-label="Evidence ledger">
+        <div class="section-heading"><div><div class="eyebrow small">LEDGER ABOVE EGO / SOURCE BEFORE STORY</div><h2>Evidence ledger</h2><p>Each claim has a provenance label, limitations and a link to its underlying source. Search freely; provenance never changes with filtering.</p></div><span class="pill" id="ledger-count">LOADING</span></div>
+        <div class="ledger-toolbar"><label class="search-wrap"><span>⌕</span><input id="ledger-search" type="search" placeholder="Search research claims..." aria-label="Search evidence claims"></label><label class="filter-wrap">PROVENANCE <select id="ledger-filter" aria-label="Filter evidence provenance"><option value="ALL">ALL STATES</option><option value="OBSERVED">OBSERVED</option><option value="VERIFIED">VERIFIED</option><option value="INFERRED">INFERRED</option><option value="UNKNOWN">UNKNOWN</option></select></label></div>
+        <div class="ledger-grid" id="ledger-list"><p class="fallback">Loading source-backed evidence…</p></div>
+      </section>
+      <section id="panel-datasets" data-panel="datasets" hidden aria-label="Data studio">
+        <div class="section-heading"><div><div class="eyebrow small">DATA INPUT / LOCAL VERIFICATION / REPRODUCIBILITY</div><h2>Data studio</h2><p>Bring your own small field-intensity table. Data stays in this browser session and is always labeled unverified.</p></div><span class="pill">NO DATA UPLOAD</span></div>
+        <div class="workbench-grid">
+          <article class="module"><div class="module-kicker">01 / LOCAL CSV INGEST</div><h3>Import observational data</h3><p class="module-desc">Use exactly these columns. Intensity values must be total field intensity in microtesla, not Kp, Bz, or nanotesla.</p><pre class="sample-csv">year,intensity_ut,source
+2023,22.4,my-observation
+2024,22.3,my-observation</pre><div class="upload-control"><label for="csv-upload" class="primary-btn file-btn">CHOOSE CSV FILE <span>↗</span></label><input id="csv-upload" type="file" accept=".csv,text/csv"></div><p class="file-hint">Maximum 200 KB · up to 1,000 records · no network transfer</p><p role="status" aria-live="polite" id="upload-status">No local file loaded.</p></article>
+          <article class="module"><div class="module-kicker">02 / PROVENANCE GUARD</div><h3>The evidence firewall</h3><p class="module-desc">Imported values aren't authenticated by this application. Source columns are user-supplied labels, not proof.</p><div class="guard-list"><div><span class="guard-icon">✓</span><div><strong>Unit checks</strong><p>Numeric ranges and columns validated at import</p></div></div><div><span class="guard-icon">✓</span><div><strong>Immutable origin state</strong><p>All imported rows marked USER_SUPPLIED_UNVERIFIED</p></div></div><div><span class="guard-icon">✓</span><div><strong>Local-first analysis</strong><p>No account, telemetry, backend or hidden upload</p></div></div></div><a href="./docs/METHODS.md" target="_blank" rel="noopener noreferrer" class="source-link">READ METHODS ↗</a></article>
+        </div>
+        <article class="module data-preview"><div class="module-top"><div><div class="module-kicker">03 / INSPECT DATASET</div><h3>Imported records</h3></div><button id="download-csv" class="ghost-btn compact" type="button" disabled>EXPORT CHECKED CSV ↗</button></div><div id="dataset-preview" class="empty-preview">Your validated CSV preview appears here. Nothing is imported until you select a file.</div></article>
+        <div class="module integrations"><div><div class="module-kicker">PLANNED / SOURCE ADAPTERS</div><h3>Ground, satellite and model data</h3><p>Future adapters can bring reproducible NOAA, ESA and observatory data into the field module, with units, epoch, location, uncertainties and provenance visible. NOAA's online geomagnetic calculator requires an API registration for programmatic use; this initial release makes no background requests.</p></div><a href="https://www.ncei.noaa.gov/products/world-magnetic-model" target="_blank" rel="noopener noreferrer">NOAA WMM ↗</a></div>
+      </section>
+    </div>
+    <footer class="footer page-shell"><div><strong>GBRM<span class="brand-caret">/</span></strong><small>GEOMAGNETIC BIOLOGY RESEARCH MODULE</small></div><p>Evidence first. Assumptions visible. No invented biology.</p><div class="footer-links"><a href="https://github.com/MichaelWave369/GBRM" target="_blank" rel="noopener noreferrer">SOURCE ↗</a><a href="./docs/METHODS.md" target="_blank" rel="noopener noreferrer">METHODS ↗</a></div></footer>
+  </main>
+</body>
+</html>

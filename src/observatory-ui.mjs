@@ -189,7 +189,7 @@ function setFamily(){
   $("hyp-prediction").value=comp?"outperform":key==="mitochondria"?"change":"decrease";
   $("hyp-outcome").value=comp?"Held-out forecast error on geophysical intensity data":key==="mitochondria"?"Mitochondrial respiration assay outcome":"Mouse neural stem-cell proliferation count";
   $("hyp-falsification").value=comp
-   ?"The frozen NBG or DCF model fails if its held-out prediction error is not lower than the preregistered persistence baseline, with no post-hoc parameter adjustment."
+   ?"The frozen NBG or DCF model fails if its held-out prediction error is not lower than the explicitly selected preregistered comparison baseline, with no post-hoc parameter adjustment."
    :key==="mitochondria"?"The proposed mediation is rejected if independently specified mitochondrial changes are absent or a mediator-targeted intervention fails to change the preregistered outcome."
    :"The directional hypothesis is rejected if the matched randomized comparison fails to show the preregistered decrease in neural stem-cell proliferation.";
   invalidate();

@@ -30,3 +30,16 @@ NOAA WMM is a model, not a live magnetic sensor. Its calculator requires registr
 
 ## Research extensions
 Modeling connections to NBG/DCF are computational analogies until independent, preregistered predictions and tests are completed. No claimed validation by proximity, resonance, or common vocabulary.
+
+## v0.2 Live observatory and hypotheses
+- NOAA SWPC Kp fetch: `https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json`, observed 3-hour Kp index; current published output uses an array of objects with numeric Kp. It is **unitless**, never µT.
+- NOAA SWPC IMF fetch: `https://services.swpc.noaa.gov/products/summary/solar-wind-mag-field.json`, Bt and GSM Bz in **nT** near the upstream solar wind. These are **not local Earth surface measurements**.
+- NOAA changed multiple public feed structures in March 2026 and removed the prior `products/solar-wind/mag-1-day.json` endpoint. GBRM relies on the above current endpoints, not deprecated sources. Parsers reject malformed or implausible records.
+- Each live data card displays the data's original UTC observation timestamp, and the site marks older timestamps **stale** rather than inventing a reading. Kp stale threshold: 6 hours. IMF stale threshold: 2 hours. Feed loss shows unavailable, without synthetic fallback readings.
+- Browser fetch may fail due to an offline device, network filtering or cross-origin restrictions. The source URLs are provided for independent inspection.
+- Rotating Earth globe is **illustrative geographic line art** with schematic markers. No spatial field intensity raster, no official Swarm anomaly polygon, and no implied magnetometer readings at marker coordinates.
+- Finlay et al. (2025) reports **two** epoch extrema for the South Atlantic (22.430, 22.094 µT), Canada (58.832, 58.031 µT), Siberia (61.359, 61.619 µT). v0.2 intentionally avoids interpolating time-series data or treating the extrema as samples from identical fixed station coordinates.
+- Historical bar chart uses a zero baseline to avoid implying dramatic changes based on truncated axes.
+- Hypothesis engine runs schema-level preregistration **only**. No experiments, correlations, predictions, causal models, significance statistics, power calculations, or approvals occur by clicking Audit.
+- Computational NBG/DCF challenges explicitly have `exposures: null` and require a specified comparison baseline. They cannot be passed off as controlled biological exposure trials.
+- Exported preregistrations retain `provenance=INFERRED`, `lifecycle=PROPOSED_NOT_EXECUTED`, and `evidenceLevel=HYPOTHESIS_ONLY`.
